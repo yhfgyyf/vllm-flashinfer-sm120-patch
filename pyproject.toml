@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vllm-flashinfer-sm120-patch"
+version = "0.1.0"
+description = "SM120 FlashInfer patch pack for vLLM (based on flashinfer 0.6.6 PR #2786 files)"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "yhfgyyf" }
+]
+license = { text = "MIT" }
+dependencies = [
+  "flashinfer-python==0.6.6"
+]
+
+[project.scripts]
+vllm-flashinfer-sm120-apply = "vllm_flashinfer_sm120.cli:apply_main"
+vllm-flashinfer-sm120-status = "vllm_flashinfer_sm120.cli:status_main"
+vllm-flashinfer-sm120-serve = "vllm_flashinfer_sm120.cli:serve_main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+vllm_flashinfer_sm120 = [
+  "patch_manifest.json",
+  "patches/flashinfer/data/csrc/nv_internal/tensorrt_llm/kernels/cutlass_kernels/moe_gemm/moe_gemm_template_dispatch_tma_ws.h",
+  "patches/flashinfer/data/cutlass/include/cute/atom/copy_traits_sm90_tma.hpp",
+  "patches/flashinfer/data/cutlass/include/cutlass/gemm/collective/builders/sm120_blockscaled_mma_builder.inl",
+  "patches/flashinfer/jit/gemm/cutlass/generate_kernels.py",
+]

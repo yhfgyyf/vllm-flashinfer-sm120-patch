@@ -1,0 +1,26 @@
+{
+  "flashinfer_version": "0.6.6",
+  "description": "SM120 K=64 grouped GEMM patch set from flashinfer PR #2786 + local fixes",
+  "files": [
+    {
+      "path": "data/csrc/nv_internal/tensorrt_llm/kernels/cutlass_kernels/moe_gemm/moe_gemm_template_dispatch_tma_ws.h",
+      "base_sha256": "b89ec78815125b13c78b3ccd06cffc2f358946b10d19e1a13aebc1fec7a927ec",
+      "patched_sha256": "6a4f2ea78f2f9cc93ffdd7b8ef4771d31d2dca3ed9828c99835766e8e9b316b1"
+    },
+    {
+      "path": "data/cutlass/include/cute/atom/copy_traits_sm90_tma.hpp",
+      "base_sha256": "7be4c9e1e9d7d1468010940c9677b0c649b1413af8380e6ba6c2aeac9683c4b2",
+      "patched_sha256": "ebac71fd3db04b0b83f659364d7d2c7c06019393c3222ce05c6c4998399b6ae2"
+    },
+    {
+      "path": "data/cutlass/include/cutlass/gemm/collective/builders/sm120_blockscaled_mma_builder.inl",
+      "base_sha256": "8f75ade68b1f809277cd7b6938616bac4291d4bf806d7fbcf3272de68a4642ba",
+      "patched_sha256": "c759da3e126d0c642844a63d4f3c3422ab460d70cd7201b5e3cd360b95451399"
+    },
+    {
+      "path": "jit/gemm/cutlass/generate_kernels.py",
+      "base_sha256": "76d1f606c2b4fa20ece035b2bbcb3b6251bb6ecac8de40bffbc41b09641f3088",
+      "patched_sha256": "02385dd5186a0e5ef3d85c7572bf323c3998ed134c4f9c61c2234257be0c946d"
+    }
+  ]
+}
