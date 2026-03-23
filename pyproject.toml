@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "vllm-flashinfer-sm120-patch"
-version = "0.1.0"
+version = "0.1.1"
 description = "SM120 FlashInfer patch pack for vLLM (based on flashinfer 0.6.6 PR #2786 files)"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -19,7 +19,6 @@ dependencies = [
 [project.scripts]
 vllm-flashinfer-sm120-apply = "vllm_flashinfer_sm120.cli:apply_main"
 vllm-flashinfer-sm120-status = "vllm_flashinfer_sm120.cli:status_main"
-vllm-flashinfer-sm120-serve = "vllm_flashinfer_sm120.cli:serve_main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

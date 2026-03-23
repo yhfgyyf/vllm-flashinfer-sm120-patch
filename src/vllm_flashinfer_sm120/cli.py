@@ -3,10 +3,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import os
 import shutil
-import subprocess
-import sys
 from pathlib import Path
 from importlib import resources
 
@@ -110,21 +107,6 @@ def apply_main() -> None:
         applied += 1
 
     print(f"done: applied={applied}, already={already}, skipped={skipped}")
-
-
-def serve_main() -> None:
-    home = Path.home()
-    base = Path(os.environ.get("VLLM_FLASHINFER_SM120_CACHE_BASE", home / ".cache" / "vllm_flashinfer_sm120"))
-    os.environ.setdefault("FLASHINFER_WORKSPACE_BASE", str(base / "flashinfer"))
-    os.environ.setdefault("VLLM_CACHE_ROOT", str(base / "vllm"))
-    os.environ.setdefault("TORCHINDUCTOR_CACHE_DIR", str(base / "torchinductor"))
-
-    (base / "flashinfer").mkdir(parents=True, exist_ok=True)
-    (base / "vllm").mkdir(parents=True, exist_ok=True)
-    (base / "torchinductor").mkdir(parents=True, exist_ok=True)
-
-    cmd = ["vllm", "serve", *sys.argv[1:]]
-    raise SystemExit(subprocess.call(cmd))
 
 
 if __name__ == "__main__":
